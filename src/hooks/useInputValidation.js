@@ -1,17 +1,18 @@
-import { useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useInputValidation = (initialValue,regex) => {
-  const [value, setValue] = useState(initialValue);
+const useInputValidation = (regex) => {
+  const [value, setValue] = useState('');
   const [isValid, setIsValid] = useState(false);
 
-  useCallback(()=>{setIsValid(regex.test(value))},[value,regex])
+  useEffect(() => {
+      setIsValid(regex.test(value));
+  }, [value, regex]);
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
-  return [value, handleChange,isValid];
+  return { value, handleChange, isValid };
 };
-
 
 export default useInputValidation;

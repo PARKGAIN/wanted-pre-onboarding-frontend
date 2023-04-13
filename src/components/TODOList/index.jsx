@@ -8,10 +8,10 @@ import {
   ListContainer,
   ListItem,
   TaskText,
-  DeleteButton,
+  UpdateDeleteButton,
 } from "./styles";
 
-function index() {
+function TODOList() {
   return (
     <Container>
       <Title>To Do List</Title>
@@ -20,10 +20,13 @@ function index() {
         <Button onClick={""}>Add</Button>
       </InputContainer>
       <ListContainer>
-        {""?.map((task, index) => (
+        {[1, 2, 3].map((task, index) => (
           <ListItem key={index}>
             <TaskText>{task}</TaskText>
-            <DeleteButton onClick={() => ""}>Delete</DeleteButton>
+            <div>
+              <UpdateDeleteButton onClick={() => ""}>Update</UpdateDeleteButton>
+              <UpdateDeleteButton onClick={() => ""}>Delete</UpdateDeleteButton>
+            </div>
           </ListItem>
         ))}
       </ListContainer>
@@ -31,4 +34,4 @@ function index() {
   );
 }
 
-export default index;
+export default TODOList;

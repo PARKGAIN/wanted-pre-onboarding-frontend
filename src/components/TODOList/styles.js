@@ -40,7 +40,7 @@ export const ListContainer = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 80%;
 `;
 
 export const ListItem = styled.li`
@@ -57,7 +57,7 @@ export const TaskText = styled.span`
   font-size: 18px;
 `;
 
-export const DeleteButton = styled.button`
+export const UpdateDeleteButton = styled.button`
   background-color: #f44336;
   color: #fff;
   border: none;
