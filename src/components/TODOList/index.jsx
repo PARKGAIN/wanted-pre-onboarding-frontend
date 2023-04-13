@@ -7,7 +7,6 @@ import {
   Button,
   ListContainer,
   ListItem,
-  TaskText,
   UpdateDeleteButton,
 } from "./styles";
 
@@ -17,16 +16,21 @@ function TODOList() {
       <Title>To Do List</Title>
       <InputContainer>
         <Input type="text" placeholder="Enter task..." />
-        <Button onClick={""}>Add</Button>
+        <Button>Add</Button>
       </InputContainer>
       <ListContainer>
-        {[1, 2, 3].map((task, index) => (
-          <ListItem key={index}>
-            <TaskText>{task}</TaskText>
-            <div>
-              <UpdateDeleteButton onClick={() => ""}>Update</UpdateDeleteButton>
-              <UpdateDeleteButton onClick={() => ""}>Delete</UpdateDeleteButton>
-            </div>
+        {[1, 2, 3].map((task) => (
+          <ListItem key={task}>
+            <label>
+              <input type="checkbox" />
+              <span>TODO 1</span>
+              <UpdateDeleteButton data-testid="modify-button">
+                수정
+              </UpdateDeleteButton>
+              <UpdateDeleteButton data-testid="delete-button">
+                삭제
+              </UpdateDeleteButton>
+            </label>
           </ListItem>
         ))}
       </ListContainer>

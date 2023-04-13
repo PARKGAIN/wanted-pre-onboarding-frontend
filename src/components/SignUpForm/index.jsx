@@ -7,7 +7,7 @@ import {
 } from "components/SignInForm/styles";
 import useInputValidation from "hooks/useInputValidation";
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "apis/api";
+import { API_BASE_URL } from "baseurl";
 import axios from "axios";
 
 const SignUpForm = () => {
