@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Container,
-  Title,
   InputContainer,
   Input,
   Button,
@@ -13,7 +12,6 @@ import {
 function TODOList() {
   return (
     <Container>
-      <Title>To Do List</Title>
       <InputContainer>
         <Input type="text" placeholder="Enter task..." />
         <Button>Add</Button>

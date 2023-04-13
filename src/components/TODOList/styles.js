@@ -7,11 +7,6 @@ export const Container = styled.div`
   margin-top: 50px;
 `;
 
-export const Title = styled.h1`
-  font-size: 36px;
-  margin-bottom: 30px;
-`;
-
 export const InputContainer = styled.div`
   display: flex;
   margin-bottom: 20px;
