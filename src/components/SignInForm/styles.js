@@ -6,16 +6,18 @@ export const PageContainer = styled.div`
   height: 100%;
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
   background-color: #f2f2f2;
+  min-height: 550px;
 `;
 
 export const Title = styled.h1`
+  text-align: center;
   font-size: 36px;
   margin-bottom: 40px;
 `;
