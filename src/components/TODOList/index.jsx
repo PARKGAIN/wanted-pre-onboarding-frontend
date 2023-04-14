@@ -51,7 +51,14 @@ const TODOList = () => {
   const updateTODO = (id) => {
     const updateTODOValue = { todo: updateValue, isCompleted: false };
     updateTodo(id, updateTODOValue);
-    setUpdateValue("");
+    const updated = list.map((list) => {
+      if (list.id === id) {
+        list.isCompleted = false;
+        list.todo = updateValue;
+      }
+      return list;
+    });
+    setList(updated);
     setUpdate();
   };
 
@@ -66,7 +73,7 @@ const TODOList = () => {
       if (list.id === id) {
         list.isCompleted = !list.isCompleted;
         updateTodo(id, {
-          todo: `${list.todo}`,
+          todo: updateValue,
           isCompleted: list.isCompleted,
         });
       }
