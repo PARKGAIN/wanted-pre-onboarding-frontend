@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Container,
   InputContainer,
@@ -8,20 +8,58 @@ import {
   ListItem,
   UpdateDeleteButton,
 } from "./styles";
+import { getTodos } from "apis/todo";
+import { addTodo } from "apis/todo";
 
-function TODOList() {
+const TODOList = () => {
+  const [token, setToken] = useState();
+  const [list, setList] = useState([]);
+  const [todo, setTodo] = useState("");
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    getTodos().then((data) => {
+      setList(data);
+    });
+  }, []);
+
+  const addToDo = useCallback(() => {
+    const newTodo = {
+      id: list.length + 1,
+      todo: todo,
+      isCompleted: false,
+      userId: token,
+    };
+    addTodo(newTodo);
+    setTodo("");
+    setList([...list, newTodo]);
+  }, [todo, token, list]);
+
+  const onchangeTODO = (e) => {
+    e.preventDefault();
+    setTodo(e.target.value);
+  };
+
   return (
     <Container>
       <InputContainer>
-        <Input type="text" placeholder="Enter task..." />
-        <Button>Add</Button>
+        <Input
+          type="text"
+          placeholder="Enter task..."
+          data-testid="new-todo-input"
+          value={todo}
+          onChange={onchangeTODO}
+        />
+        <Button data-testid="new-todo-add-button" onClick={addToDo}>
+          추가
+        </Button>
       </InputContainer>
       <ListContainer>
-        {[1, 2, 3].map((task) => (
-          <ListItem key={task}>
+        {list?.map((e, i) => (
+          <ListItem key={e}>
             <label>
-              <input type="checkbox" />
-              <span>TODO 1</span>
+              <input type="checkbox" value={list[i].isCompleted} />
+              <span>{list[i].todo}</span>
               <UpdateDeleteButton data-testid="modify-button">
                 수정
               </UpdateDeleteButton>
@@ -34,6 +72,6 @@ function TODOList() {
       </ListContainer>
     </Container>
   );
-}
+};
 
 export default TODOList;
