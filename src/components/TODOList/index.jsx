@@ -103,6 +103,7 @@ const TODOList = () => {
               />
               {update == i ? (
                 <input
+                  data-testid="modify-input"
                   defaultValue={list[i].todo}
                   value={updateValue}
                   onChange={handleUpdateValue}
@@ -114,7 +115,7 @@ const TODOList = () => {
             {update == i ? (
               <div>
                 <UpdateDeleteButton
-                  data-testid="modify-button"
+                  data-testid="submit-button"
                   onClick={() => {
                     setUpdate(i);
                     updateTODO(list[i].id);
@@ -123,7 +124,7 @@ const TODOList = () => {
                   제출
                 </UpdateDeleteButton>
                 <UpdateDeleteButton
-                  data-testid="delete-button"
+                  data-testid="cancel-button"
                   onClick={() => setUpdate()}
                 >
                   취소
