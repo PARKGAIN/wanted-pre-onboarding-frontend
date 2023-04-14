@@ -8,7 +8,7 @@ import {
   ListItem,
   UpdateDeleteButton,
 } from "./styles";
-import { getTodos } from "apis/todo";
+import { getTodos, updateCheckbox } from "apis/todo";
 import { addTodo } from "apis/todo";
 import { deleteTodo } from "apis/todo";
 import { updateTodo } from "apis/todo";
@@ -43,25 +43,24 @@ const TODOList = () => {
     e.preventDefault();
     setTodo(e.target.value);
   };
+
   const handleUpdateValue = (e) => {
     e.preventDefault();
     setUpdateValue(e.target.value);
   };
 
   const updateTODO = (id) => {
-    const updateTODOValue = { todo: updateValue, isCompleted: false };
-    updateTodo(id, updateTODOValue);
     const updated = list.map((list) => {
       if (list.id === id) {
-        list.isCompleted = false;
         list.todo = updateValue;
       }
       return list;
     });
+    console.dir(list);
+    updateTodo(id, updateValue);
     setList(updated);
     setUpdate();
   };
-
   const deleteTODO = (id) => {
     deleteTodo(id);
     const removeArr = [...list].filter((list) => list.id !== id);
@@ -72,14 +71,11 @@ const TODOList = () => {
     const isCompleted = list.map((list) => {
       if (list.id === id) {
         list.isCompleted = !list.isCompleted;
-        updateTodo(id, {
-          todo: updateValue,
-          isCompleted: list.isCompleted,
-        });
       }
       return list;
     });
     setList(isCompleted);
+    updateCheckbox(id, list.isCompleted, list.todo);
   };
 
   return (
@@ -98,12 +94,12 @@ const TODOList = () => {
       </InputContainer>
       <ListContainer>
         {list?.map((e, i) => (
-          <ListItem key={e}>
+          <ListItem key={list[i].id}>
             <label>
               <input
                 type="checkbox"
                 checked={list[i].isCompleted}
-                onClick={() => completeTodo(list[i].id)}
+                onChange={() => completeTodo(list[i].id)}
               />
               {update == i ? (
                 <input

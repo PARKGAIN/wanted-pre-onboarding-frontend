@@ -30,11 +30,11 @@ export const addTodo = async (newTodo) => {
   }
 };
 
-export const updateTodo = async (id, updatedTodo) => {
+export const updateTodo = async (id, updateValue) => {
   try {
     const response = await axios.put(
       `${API_BASE_URL}/todos/${id}`,
-      updatedTodo,
+      { todo: updateValue, isCompleted: false },
       {
         headers: {
           "Content-Type": "application/json",
@@ -55,6 +55,24 @@ export const deleteTodo = async (id) => {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
       },
     });
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const updateCheckbox = async (id, isCompleted, todo) => {
+  try {
+    const response = await axios.put(
+      `${API_BASE_URL}/todos/${id}`,
+      { todo: todo, isCompleted: isCompleted },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      }
+    );
     return response.data;
   } catch (err) {
     console.error(err);
