@@ -8,10 +8,13 @@ import {
   ListItem,
   UpdateDeleteButton,
 } from "./styles";
-import { getTodos, updateCheckbox } from "apis/todo";
-import { addTodo } from "apis/todo";
-import { deleteTodo } from "apis/todo";
-import { updateTodo } from "apis/todo";
+import {
+  getTodos,
+  updateCheckbox,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+} from "apis/todo";
 
 const TODOList = () => {
   const [token, setToken] = useState("");
