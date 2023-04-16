@@ -8,13 +8,7 @@ import {
   ListItem,
   UpdateDeleteButton,
 } from "./styles";
-import {
-  getTodos,
-  updateCheckbox,
-  addTodo,
-  deleteTodo,
-  updateTodo,
-} from "apis/todo";
+import { getTodos, addTodo, deleteTodo, updateTodo } from "apis/todo";
 
 const TODOList = () => {
   const [token, setToken] = useState("");
@@ -56,11 +50,14 @@ const TODOList = () => {
     const updated = list.map((list) => {
       if (list.id === id) {
         list.todo = updateValue;
+        updateTodo(id, {
+          todo: updateValue,
+          isCompleted: list.isCompleted,
+        });
       }
       return list;
     });
-    console.dir(list);
-    updateTodo(id, updateValue);
+    // updateTodo(id, updateValue);
     setList(updated);
     setUpdate();
   };
@@ -74,11 +71,11 @@ const TODOList = () => {
     const isCompleted = list.map((list) => {
       if (list.id === id) {
         list.isCompleted = !list.isCompleted;
+        updateTodo(id, { todo: list.todo, isCompleted: list.isCompleted });
       }
       return list;
     });
     setList(isCompleted);
-    updateCheckbox(id, list.isCompleted, list.todo);
   };
 
   return (
