@@ -57,7 +57,6 @@ const TODOList = () => {
       }
       return list;
     });
-    // updateTodo(id, updateValue);
     setList(updated);
     setUpdate();
   };
