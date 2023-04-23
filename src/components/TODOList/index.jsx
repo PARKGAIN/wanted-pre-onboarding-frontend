@@ -36,16 +36,6 @@ const TODOList = () => {
     setList([...list, newTodo]);
   }, [todo, token, list]);
 
-  const onchangeTODO = (e) => {
-    e.preventDefault();
-    setTodo(e.target.value);
-  };
-
-  const handleUpdateValue = (e) => {
-    e.preventDefault();
-    setUpdateValue(e.target.value);
-  };
-
   const updateTODO = (id) => {
     const updated = list.map((list) => {
       if (list.id === id) {
@@ -85,7 +75,7 @@ const TODOList = () => {
           placeholder="할일을 입력하세요..."
           data-testid="new-todo-input"
           value={todo}
-          onChange={onchangeTODO}
+          onChange={(e) => setTodo(e.target.value)}
         />
         <Button data-testid="new-todo-add-button" onClick={addToDo}>
           추가
@@ -105,7 +95,7 @@ const TODOList = () => {
                   data-testid="modify-input"
                   defaultValue={list[i].todo}
                   value={updateValue}
-                  onChange={handleUpdateValue}
+                  onChange={(e) => setUpdateValue(e.target.value)}
                 />
               ) : (
                 <span>{list[i].todo}</span>
