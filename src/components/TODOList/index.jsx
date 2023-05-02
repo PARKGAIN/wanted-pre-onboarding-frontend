@@ -14,8 +14,8 @@ const TODOList = () => {
   const [token, setToken] = useState("");
   const [list, setList] = useState([]);
   const [todo, setTodo] = useState("");
-  const [update, setUpdate] = useState();
-  const [updateValue, setUpdateValue] = useState(list.todo);
+  const [isUpdate, setUpdate] = useState();
+  const [updateValue, setUpdateValue] = useState("");
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
@@ -26,10 +26,8 @@ const TODOList = () => {
 
   const addToDo = useCallback(() => {
     const newTodo = {
-      id: list.length + 1,
       todo: todo,
       isCompleted: false,
-      userId: token,
     };
     addTodo(newTodo);
     setTodo("");
@@ -90,10 +88,11 @@ const TODOList = () => {
                 checked={list[i].isCompleted}
                 onChange={() => completeTodo(list[i].id)}
               />
-              {update == i ? (
+              {isUpdate == i ? (
                 <input
                   data-testid="modify-input"
                   defaultValue={list[i].todo}
+                  placeholder={list[i].todo}
                   value={updateValue}
                   onChange={(e) => setUpdateValue(e.target.value)}
                 />
@@ -101,7 +100,7 @@ const TODOList = () => {
                 <span>{list[i].todo}</span>
               )}
             </label>
-            {update == i ? (
+            {isUpdate == i ? (
               <div>
                 <UpdateDeleteButton
                   data-testid="submit-button"

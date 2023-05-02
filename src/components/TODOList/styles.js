@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -22,6 +22,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -53,10 +54,12 @@ export const TaskText = styled.span`
 `;
 
 export const UpdateDeleteButton = styled.button`
+  cursor: pointer;
+  margin: 0 2px;
   background-color: #f44336;
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 16px;
 `;
