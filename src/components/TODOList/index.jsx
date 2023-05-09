@@ -25,13 +25,16 @@ const TODOList = () => {
   }, []);
 
   const addToDo = useCallback(() => {
+    console.log(todo);
+    console.log(newTodo);
     const newTodo = {
       todo: todo,
       isCompleted: false,
     };
+
     addTodo(newTodo);
     setTodo("");
-    setList([...list, newTodo]);
+    setList(list ? [...list, newTodo] : [newTodo]);
   }, [todo, token, list]);
 
   const updateTODO = (id) => {
@@ -75,7 +78,7 @@ const TODOList = () => {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <Button data-testid="new-todo-add-button" onClick={addToDo}>
+        <Button data-testid="new-todo-add-button" onClick={() => addToDo}>
           추가
         </Button>
       </InputContainer>

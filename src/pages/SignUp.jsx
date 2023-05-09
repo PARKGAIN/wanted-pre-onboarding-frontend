@@ -6,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (token) {
+    if (localStorage.getItem("token")) {
       navigate("/todo");
     }
   }, []);

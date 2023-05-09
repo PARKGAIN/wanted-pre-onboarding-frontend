@@ -2,6 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const Welcome = () => {
+  return (
+    <MainContainer>
+      <LogoContainer>
+        <Title>✍TO DO</Title>
+      </LogoContainer>
+      <Link to="/signup">
+        <SignupButton>회원가입</SignupButton>
+      </Link>
+      <Link to="/signin">
+        <SigninButton>로그인</SigninButton>
+      </Link>
+      <Footer />
+      <Copyright />
+    </MainContainer>
+  );
+};
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,23 +82,4 @@ const Copyright = styled.p`
   font-size: 14px;
   color: #999;
 `;
-
-const Welcome = () => {
-  return (
-    <MainContainer>
-      <LogoContainer>
-        <Title>✍TO DO</Title>
-      </LogoContainer>
-      <Link to="/signup">
-        <SignupButton>회원가입</SignupButton>
-      </Link>
-      <Link to="/signin">
-        <SigninButton>로그인</SigninButton>
-      </Link>
-      <Footer />
-      <Copyright />
-    </MainContainer>
-  );
-};
-
 export default Welcome;
