@@ -8,6 +8,7 @@ export const getTodos = async () => {
     const response = await axios.get(`${API_BASE_URL}/todos`, {
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
+        withCredentials: true,
       },
     });
     return response.data;
@@ -22,6 +23,7 @@ export const addTodo = async (newTodo) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${ACCESS_TOKEN}`,
+        withCredentials: true,
       },
     });
     return response.data;
@@ -35,6 +37,7 @@ export const deleteTodo = async (id) => {
     const response = await axios.delete(`${API_BASE_URL}/todos/${id}`, {
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,
+        withCredentials: true,
       },
     });
     return response.data;
@@ -52,6 +55,7 @@ export const updateTodo = async (id, updateValue) => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${ACCESS_TOKEN}`,
+          withCredentials: true,
         },
       }
     );

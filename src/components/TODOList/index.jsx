@@ -19,14 +19,16 @@ const TODOList = () => {
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
-    getTodos().then((data) => {
-      setList(data);
-    });
+    loadToDos();
   }, []);
 
+  const loadToDos = async () => {
+    await getTodos().then((data) => {
+      setList(data);
+    });
+  };
+
   const addToDo = useCallback(() => {
-    console.log(todo);
-    console.log(newTodo);
     const newTodo = {
       todo: todo,
       isCompleted: false,
@@ -78,7 +80,12 @@ const TODOList = () => {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <Button data-testid="new-todo-add-button" onClick={() => addToDo}>
+        <Button
+          data-testid="new-todo-add-button"
+          onClick={() => {
+            addToDo();
+          }}
+        >
           추가
         </Button>
       </InputContainer>
