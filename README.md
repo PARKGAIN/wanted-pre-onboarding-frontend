@@ -1,6 +1,6 @@
 ## 원티드 프리온보딩 프론트엔드 인턴십 사전과제
 
-4월 원티드 프론트엔드 인턴십 사전과제로 개발한 TO DO APP 입니다.
+4월 원티드 프론트엔드 인턴십 사전과제로 개발한 TO DO APP 입니다. 개발한 이후 리팩토링하고 있습니다.
 
 ### 기능
 - 회원가입 (실제 사용하는 정보를 입력하지 마세요!)
@@ -11,6 +11,9 @@
 - TO DO 삭제하기
 
 ### 화면
+<img src="https://user-images.githubusercontent.com/84880886/235607188-7695b563-b54e-4ade-b657-5d0f51d2d0ff.gif" width="600px"/>
+
+
 ### 배포 링크 
 https://wanted-pre-onboarding-frontend-green.vercel.app/
 
