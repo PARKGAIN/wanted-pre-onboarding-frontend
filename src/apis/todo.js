@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL } from "baseurl";
-
-const ACCESS_TOKEN = localStorage.getItem("token");
+import { ACCESS_TOKEN } from "context/token";
 
 export const getTodos = async () => {
   try {

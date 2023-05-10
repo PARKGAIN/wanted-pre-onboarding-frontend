@@ -3,12 +3,13 @@ import { PageContainer } from "components/SignInForm/styles";
 import SignUpForm from "components/SignUpForm";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN } from "context/token";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (ACCESS_TOKEN) {
       navigate("/todo");
     }
   }, []);
