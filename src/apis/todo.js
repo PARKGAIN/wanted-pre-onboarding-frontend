@@ -32,20 +32,6 @@ export const addTodo = async (newTodo) => {
   }
 };
 
-export const deleteTodo = async (id) => {
-  try {
-    const response = await axios.delete(`${API_BASE_URL}/todos/${id}`, {
-      headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-        withCredentials: true,
-      },
-    });
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 export const updateTodo = async (id, updateValue) => {
   try {
     const response = await axios.put(
@@ -59,6 +45,20 @@ export const updateTodo = async (id, updateValue) => {
         },
       }
     );
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deleteTodo = async (id) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/todos/${id}`, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+        withCredentials: true,
+      },
+    });
     return response.data;
   } catch (err) {
     console.error(err);

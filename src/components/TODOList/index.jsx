@@ -14,7 +14,7 @@ const TODOList = () => {
   const [token, setToken] = useState("");
   const [list, setList] = useState([]);
   const [todo, setTodo] = useState("");
-  const [isUpdate, setUpdate] = useState();
+  const [isUpdate, setUpdate] = useState("");
   const [updateValue, setUpdateValue] = useState("");
 
   useEffect(() => {
