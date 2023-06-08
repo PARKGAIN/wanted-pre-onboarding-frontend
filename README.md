@@ -13,15 +13,6 @@
 ### 화면
 <img src="https://user-images.githubusercontent.com/84880886/235607188-7695b563-b54e-4ade-b657-5d0f51d2d0ff.gif" width="600px"/>
 
-#### 로그인 가능한 계정
-```
-id: kkk@haha.com
-password: 123456789
-```
-
-### 배포 링크 
-https://wanted-pre-onboarding-frontend-green.vercel.app/
-
 ### 프로젝트의 실행 방법
 ```
 $ npm install
